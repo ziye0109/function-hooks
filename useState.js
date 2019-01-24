@@ -24,3 +24,5 @@ const render = env => Component => env(Component());
 render(console.log)(FunctionalComponet);
 render(console.log)(FunctionalComponet);
 render(console.log)(FunctionalComponet);
+
+

@@ -22,8 +22,10 @@ const hooksContext = () => {
         nextIndex: 0,
         state: initalState ? [initalState] : []
       };
+      stateHeap[currentFn] = newState;
     }
     const { state, nextIndex } = stateHeap[currentFn];
+
     return [state[nextIndex], () => {}];
   };
 

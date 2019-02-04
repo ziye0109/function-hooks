@@ -1,13 +1,16 @@
-const hooks = require("./functionHooks");
+const hooksContext = require("./hooksContext");
 
-const [ get1, set1 ] = hooks();
+const [fnWrapper] = hooksContext();
 
-console.log(get1());
-
-set1(1);
-set1(2);
-set1(3);
-
-console.log(get1());
+const renderString = ()=>{
 
 
+    return 'hello world';
+
+
+
+}
+
+const fnWithState = fnWrapper(renderString);
+
+console.log(fnWithState());

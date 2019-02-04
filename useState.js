@@ -2,11 +2,9 @@ let state;
 
 const useState = initialState => {
   const setState = newState => (state = newState);
-
   if (!state) {
     state = initialState;
   }
-
   return [state, setState];
 };
 

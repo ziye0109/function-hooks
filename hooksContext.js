@@ -26,10 +26,10 @@ const hooksContext = () => {
     }
     const { state, nextIndex } = stateHeap[currentFn];
 
-    return [state[nextIndex], () => {}];
+    return [state[nextIndex], (newState) => state[nextIndex++]=newState];
   };
 
-  return [fnWrapper, useState];
+  return [fnWrapper, useState,stateHeap,fnStack];
 };
 
 module.exports = hooksContext;

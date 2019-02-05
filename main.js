@@ -1,15 +1,12 @@
 const hooksContext = require("./hooksContext");
 
-const [fnWrapper] = hooksContext();
+const [fnWrapper, useState,stateHeap,fnStack] = hooksContext();
 
-const renderString = ()=>{
-
-
-    return 'hello world';
-
-
-
-}
+const renderString = () => {
+  const [name, setName] = useState("ziye");
+  console.log(name);
+  return name;
+};
 
 const fnWithState = fnWrapper(renderString);
 

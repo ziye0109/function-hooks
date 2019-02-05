@@ -1,13 +1,15 @@
-const hooksContext = require("./hooksContext");
+const { TNG, useState,hooksHeap } = require("./TNG");
 
-const [fnWrapper, useState,stateHeap,fnStack] = hooksContext();
-
-const renderString = () => {
+const renderObj = () => {
   const [name, setName] = useState("ziye");
-  console.log(name);
-  return name;
+  const [role, setRole] = useState("father");
+
+  setName('miranda');
+  return { name, role };
 };
 
-const fnWithState = fnWrapper(renderString);
+const withState = TNG(renderObj);
 
-console.log(fnWithState());
+console.log(withState());
+console.log(withState());
+console.log(hooksHeap);

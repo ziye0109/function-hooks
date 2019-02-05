@@ -4,6 +4,10 @@ const hooksContext = () => {
 
   let fnWrapper = fn => {
     const statefulFn = (...args) => {
+      if (stateHeap[statefulFn]) {
+        stateHeap[statefulFn].nextIndex = 0;
+      }
+
       fnStack.push(statefulFn);
       try {
         return fn(...args);
@@ -20,16 +24,18 @@ const hooksContext = () => {
     if (!stateHeap[currentFn]) {
       const newState = {
         nextIndex: 0,
-        state: initalState ? [initalState] : []
+        state: []
       };
       stateHeap[currentFn] = newState;
     }
     const { state, nextIndex } = stateHeap[currentFn];
-
-    return [state[nextIndex], (newState) => state[nextIndex++]=newState];
+    let currentIndex = nextIndex;
+    stateHeap[currentFn].state[currentIndex] = initalState;
+    stateHeap[currentFn].nextIndex = nextIndex + 1;
+    return [state[currentIndex], newState => (state[currentIndex] = newState)];
   };
 
-  return [fnWrapper, useState,stateHeap,fnStack];
+  return [fnWrapper, useState, stateHeap, fnStack];
 };
 
 module.exports = hooksContext;

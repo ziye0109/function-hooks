@@ -3,6 +3,8 @@ class HookComponent {
     this.hooks = [];
   }
 
+  static hooks = []
+
   render() {
     console.log("render UI");
   }

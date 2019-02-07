@@ -1,3 +1,4 @@
+/*
 const { TNG, useState,hooksHeap } = require("./TNG");
 
 const renderObj = () => {
@@ -13,3 +14,10 @@ const withState = TNG(renderObj);
 console.log(withState());
 console.log(withState());
 console.log(hooksHeap);
+*/
+
+
+const {HookComponent} = require('./HookComponent.js');
+
+const instance = new HookComponent();
+instance.render();
